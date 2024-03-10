@@ -6,19 +6,19 @@
     "plugin:import/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/recommended",
-    "eslint-config-prettier",
+    "eslint-config-prettier"
   ],
   "plugins": ["react-refresh"],
   "settings": {
     "react": {
-      "version": "detect",
+      "version": "detect"
     },
     "import/resolver": {
       "node": {
         "paths": ["src"],
-        "extensions": [".js", ".jsx", ".ts", ".tsx"],
-      },
-    },
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
   },
   "rules": {
     "no-unused-vars": [
@@ -27,9 +27,20 @@
         "vars": "all",
         "args": "after-used",
         "ignoreRestSiblings": true,
-        "argsIgnorePattern": "^_",
-      },
+        "argsIgnorePattern": "^_"
+      }
     ],
-    "react/react-in-jsx-scope": "off",
-  },
+    "comma-dangle": "off",
+    "@typescript-eslint/comma-dangle": [
+      "error",
+      {
+        "arrays": "never",
+        "objects": "always-multiline",
+        "imports": "never",
+        "exports": "never",
+        "functions": "never"
+      }
+    ],
+    "react/react-in-jsx-scope": "off"
+  }
 }
