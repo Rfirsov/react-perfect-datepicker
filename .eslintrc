@@ -6,6 +6,8 @@
     "plugin:import/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/recommended",
+    "airbnb",
+    "plugin:react/jsx-runtime",
     "eslint-config-prettier"
   ],
   "plugins": ["react-refresh"],
@@ -21,26 +23,6 @@
     }
   },
   "rules": {
-    "no-unused-vars": [
-      "error",
-      {
-        "vars": "all",
-        "args": "after-used",
-        "ignoreRestSiblings": true,
-        "argsIgnorePattern": "^_"
-      }
-    ],
-    "comma-dangle": "off",
-    "@typescript-eslint/comma-dangle": [
-      "error",
-      {
-        "arrays": "never",
-        "objects": "always-multiline",
-        "imports": "never",
-        "exports": "never",
-        "functions": "never"
-      }
-    ],
     "react/react-in-jsx-scope": "off"
   }
 }
