@@ -6,11 +6,14 @@
     "plugin:import/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:@typescript-eslint/recommended",
-    "airbnb",
+    "airbnb-typescript",
     "plugin:react/jsx-runtime",
     "eslint-config-prettier"
   ],
   "plugins": ["react-refresh"],
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "settings": {
     "react": {
       "version": "detect"
@@ -23,6 +26,7 @@
     }
   },
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }]
   }
 }
