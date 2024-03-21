@@ -1,6 +1,8 @@
+import { memo } from 'react';
 import { WEEK_LIST } from '../../constants';
 
 const Week = () => {
+  console.log('render Week');
   return (
     <div className="week-title">
       {WEEK_LIST.map((day) => (
@@ -10,4 +12,4 @@ const Week = () => {
   );
 };
 
-export default Week;
+export default memo(Week);

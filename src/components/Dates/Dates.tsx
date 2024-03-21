@@ -1,13 +1,15 @@
-import { eachDayOfInterval, format, getDay } from 'date-fns';
-import useSelectedTime from '../../hooks/useSelectedTime';
-const Dates = () => {
-  const { selectedTime, start, end } = useSelectedTime();
-  console.log('🚀 ~ Dates ~ selectedTime:', selectedTime);
+import { format, getDay } from 'date-fns';
+import useSelectedPeriod from '../../hooks/useSelectedPeriod';
 
-  // const [selectedDaysToRender, setSelectedDaysToRender] = useState<Date[]>([]);
+interface DatesProps {
+  selectedTime: Date;
+}
 
-  const selectedDaysToRender = eachDayOfInterval({ start, end });
-  console.log('🚀 ~ Dates ~ start:', start);
+const Dates = ({ selectedTime }: DatesProps) => {
+  const { selectedDaysToRender } = useSelectedPeriod(selectedTime);
+
+  console.log('render Dates');
+
   return (
     <div className="week">
       {selectedDaysToRender.map((day) => {
@@ -15,7 +17,9 @@ const Dates = () => {
           <button
             key={format(day, 'MM/dd/yyyy')}
             className={getDay(day) === 0 ? 'weekday sunday' : 'weekday'}
-            onClick={() => console.log(format(day, 'MM/dd/yyyy'))}
+            onClick={() => {
+              console.log(format(day, 'MM/dd/yyyy'));
+            }}
           >
             {day.getDate()}
           </button>

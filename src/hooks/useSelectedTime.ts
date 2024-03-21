@@ -1,15 +1,14 @@
-import { useState } from 'react';
-import { lastDayOfWeek, startOfMonth, startOfWeek, addMonths } from 'date-fns';
+import { Dispatch, SetStateAction, useState } from 'react';
 import { currentTime } from '../utils';
 
-const useSelectedTime = () => {
+interface UseSelectedTime {
+  selectedTime: Date;
+  setSelectedTime: Dispatch<SetStateAction<Date>>;
+}
+const useSelectedTime = (): UseSelectedTime => {
   const [selectedTime, setSelectedTime] = useState(currentTime);
-  console.log("🚀 ~ useSelectedTime ~ selectedTime:", selectedTime)
 
-  const start = startOfWeek(startOfMonth(selectedTime), { weekStartsOn: 1 });
-  const end = lastDayOfWeek(startOfMonth(addMonths(startOfMonth(selectedTime), 1)), { weekStartsOn: 1 });
-
-  return { selectedTime, setSelectedTime, start, end };
+  return { selectedTime, setSelectedTime };
 };
 
 export default useSelectedTime;

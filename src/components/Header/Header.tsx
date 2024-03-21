@@ -1,14 +1,20 @@
+import { Dispatch, SetStateAction } from 'react';
 import { addMonths, getYear, getMonth } from 'date-fns';
 import DropDown from '../DropDown';
 import { MONTHS_LIST, YEARS_LIST } from '../../constants';
-import useSelectedTime from '../../hooks/useSelectedTime';
 
-const Header = () => {
-  const { selectedTime, setSelectedTime } = useSelectedTime();
+interface HeaderProps {
+  selectedTime: Date;
+  setSelectedTime: Dispatch<SetStateAction<Date>>;
+}
+
+const Header = ({ selectedTime, setSelectedTime }: HeaderProps) => {
 
   const prevPeriod = (): void => setSelectedTime(addMonths(selectedTime, -1));
 
   const nextPeriod = (): void => setSelectedTime(addMonths(selectedTime, 1));
+
+  console.log('render Header');
 
   return (
     <div className="header">
