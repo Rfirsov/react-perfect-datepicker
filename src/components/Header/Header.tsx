@@ -14,8 +14,6 @@ const Header = ({ selectedTime, setSelectedTime }: HeaderProps) => {
 
   const nextPeriod = (): void => setSelectedTime(addMonths(selectedTime, 1));
 
-  console.log('render Header');
-
   return (
     <div className="header">
       <button onClick={prevPeriod}>&#60;</button>

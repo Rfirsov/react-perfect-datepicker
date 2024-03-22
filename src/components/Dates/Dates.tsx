@@ -8,8 +8,6 @@ interface DatesProps {
 const Dates = ({ selectedTime }: DatesProps) => {
   const { selectedDaysToRender } = useSelectedPeriod(selectedTime);
 
-  console.log('render Dates');
-
   return (
     <div className="week">
       {selectedDaysToRender.map((day) => {
