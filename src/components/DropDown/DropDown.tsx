@@ -1,20 +1,29 @@
+import { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { setMonth, setYear } from 'date-fns';
+import { START_YEAR_OF_COUNT } from '../../constants';
+
 interface DropDownProps {
-  optionsList: string[];
-  defaultOption: string | number;
+  type: 'month' | 'year';
+  selectedTime: Date;
+  setSelectedTime: Dispatch<SetStateAction<Date>>;
+  optionsList: ValueTitleMonth[] | ValueTitleYear[];
+  defaultOption: number;
 }
 
-const DropDown = ({ optionsList, defaultOption }: DropDownProps) => {
+const DropDown = ({ type, selectedTime, setSelectedTime, optionsList, defaultOption }: DropDownProps) => {
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const value = Number(e.target.value);
 
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const { value } = e.target;
-    // console.log('🚀 ~ DropDown ~ value:', value);
+    if (type === 'month') setSelectedTime(setMonth(selectedTime, value));
+
+    if (type === 'year') setSelectedTime(setYear(selectedTime, value + START_YEAR_OF_COUNT));
   };
 
   return (
     <select value={defaultOption} onChange={handleChange}>
-      {optionsList.map((value) => (
+      {optionsList.map(({ value, title }) => (
         <option key={value} value={value}>
-          {value}
+          {title}
         </option>
       ))}
     </select>

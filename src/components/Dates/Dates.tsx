@@ -1,11 +1,13 @@
+import { Dispatch, SetStateAction } from 'react';
 import { format, getDay } from 'date-fns';
 import useSelectedPeriod from '../../hooks/useSelectedPeriod';
 
 interface DatesProps {
   selectedTime: Date;
+  setSelectedTime: Dispatch<SetStateAction<Date>>;
 }
 
-const Dates = ({ selectedTime }: DatesProps) => {
+const Dates = ({ selectedTime, setSelectedTime }: DatesProps) => {
   const { selectedDaysToRender } = useSelectedPeriod(selectedTime);
 
   return (
@@ -15,9 +17,7 @@ const Dates = ({ selectedTime }: DatesProps) => {
           <button
             key={format(day, 'MM/dd/yyyy')}
             className={getDay(day) === 0 ? 'weekday sunday' : 'weekday'}
-            onClick={() => {
-              console.log(format(day, 'MM/dd/yyyy'));
-            }}
+            onClick={() => setSelectedTime(day)}
           >
             {day.getDate()}
           </button>

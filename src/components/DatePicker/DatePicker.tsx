@@ -9,7 +9,7 @@ const DatePicker = () => {
     <div className="date-picker">
       <Header selectedTime={selectedTime} setSelectedTime={setSelectedTime} />
       <Week />
-      <Dates selectedTime={selectedTime} />
+      <Dates selectedTime={selectedTime} setSelectedTime={setSelectedTime} />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import './App.scss';
-import DatePicker from './components/DatePicker';
+import MainPage from './pages/MainPage';
 
-const App = () => <DatePicker />;
+const App = () => <MainPage />;
 
 export default App;
