@@ -1,17 +1,17 @@
-import { ChangeEvent, Dispatch, SetStateAction } from 'react';
+import { useContext, ChangeEvent } from 'react';
 import { setMonth, setYear } from 'date-fns';
 import { START_YEAR_OF_COUNT } from '../../constants';
+import MainPageContext from '../../store/MainPageContext';
 
 interface DropDownProps {
   type: 'month' | 'year';
-  selectedTime: Date;
-  setSelectedTime: Dispatch<SetStateAction<Date>>;
   optionsList: ValueTitleMonth[] | ValueTitleYear[];
   defaultOption: number;
 }
 
-const DropDown = ({ type, selectedTime, setSelectedTime, optionsList, defaultOption }: DropDownProps) => {
-  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+const DropDown = ({ type, optionsList, defaultOption }: DropDownProps) => {
+  const { selectedTime, setSelectedTime } = useContext(MainPageContext);
+  const handleChange = (e: ChangeEvent<HTMLSelectElement>): void => {
     const value = Number(e.target.value);
 
     if (type === 'month') setSelectedTime(setMonth(selectedTime, value));

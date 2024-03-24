@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { WEEK_LIST } from '../../constants';
 
 const Week = () => {
@@ -11,4 +10,4 @@ const Week = () => {
   );
 };
 
-export default memo(Week);
+export default Week;

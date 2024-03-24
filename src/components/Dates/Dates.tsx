@@ -1,13 +1,10 @@
-import { Dispatch, SetStateAction } from 'react';
+import { useContext } from 'react';
 import { formatDate, getDay } from 'date-fns';
 import useSelectedPeriod from '../../hooks/useSelectedPeriod';
+import MainPageContext from '../../store/MainPageContext';
 
-interface DatesProps {
-  selectedTime: Date;
-  setSelectedTime: Dispatch<SetStateAction<Date>>;
-}
-
-const Dates = ({ selectedTime, setSelectedTime }: DatesProps) => {
+const Dates = () => {
+  const { selectedTime, setSelectedTime } = useContext(MainPageContext);
   const { selectedDaysToRender } = useSelectedPeriod(selectedTime);
 
   return (
